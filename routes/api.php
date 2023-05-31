@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+//
+Route::get('/get/users/all', [UserController::class, 'index']);
+Route::get('/get/users', [UserController::class, 'getPaginated']);
+Route::get('/get/users/{user}', [UserController::class, 'show']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/get/products/all', [ProductController::class, 'index']);
+Route::get('/get/products', [ProductController::class, 'getPaginated']);
+Route::get('/get/product/{product}', [ProductController::class, 'show']);
